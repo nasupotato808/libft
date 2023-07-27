@@ -23,3 +23,15 @@ void	*ft_calloc(size_t count, size_t size)
 	}
 	return (new);
 }
+/*
+{
+	size_t	*new;
+
+	new = malloc(count * size);
+	while (*new != '\0')
+	{
+		*new++ = 0;
+	}
+	return (new);
+}
+*/

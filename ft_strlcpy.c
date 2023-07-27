@@ -10,22 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	The strlcpy() function copies up to size - 1 characters from the NUL-terminated string src to dst, NUL-terminating the result.
+	Return:
+	For strlcat() that
+     means the initial length of dst plus the length of src
+*/
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	n;
+	size_t	i;
 
-	n = 0;
-	while (n++ < dstsize)
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (i < dstsize - 1 && src[i] != '\0')
 	{
-		*dst++ = *src++;
-		if (*dst++ == '\0')
-			break ;
+		dst[i] = src[i];
+		i++;
 	}
-	if (n < dstsize)
-		return (n);
-	if (n > 0)
-		*(dst - 1) = '\0';
-	return (n + ft_strlen(src));
+	if (i < dstsize)
+		dst[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

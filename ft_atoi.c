@@ -12,23 +12,15 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	skip_whitespace(const char *str, int i)
 {
-	int	i;
-	int	res;
-	int	n;
-
-	i = 0;
-	n = 1;
-	res = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			n *= -1;
-		i++;
-	}
+	return (i);
+}
+
+int parse_num(const char *str, int i, int res)
+{
 	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -39,5 +31,26 @@ int	ft_atoi(const char *str)
 		}
 		i++;
 	}
+	return (res);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	res;
+	int	n;
+
+	i = 0;
+	n = 1;
+	res = 0;
+	
+	i += skip_whitespace(str, i);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			n *= -1;
+		i++;
+	}
+	res = parse_num(str, i, res);
 	return (res * n);
 }

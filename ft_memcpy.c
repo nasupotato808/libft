@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiawong <jiawong@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: jiawong <jiawong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 21:38:00 by jiawong           #+#    #+#             */
-/*   Updated: 2023/07/07 21:38:28 by jiawong          ###   ########.fr       */
+/*   Created: 2023/06/26 16:23:56 by jiawong           #+#    #+#             */
+/*   Updated: 2023/06/28 20:50:54 by jiawong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    long    nb;
+	size_t	i;
 
-    nb = n;
-	if (nb < 0)
+	i = 0;
+	while (i < n)
 	{
-		ft_putchar_fd('-', fd);
-		nb *= -1;
+		*(char *)(dst + i) = *(char *)(src + i);
+		i++;
 	}
-	if ( nb >= 0 && nb <= 9)
-        ft_putchar_fd(nb + '0', fd);
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);	
-	}
+	return (dst);
 }

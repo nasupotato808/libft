@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiawong <jiawong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 21:38:00 by jiawong           #+#    #+#             */
-/*   Updated: 2023/07/07 21:38:28 by jiawong          ###   ########.fr       */
+/*   Created: 2023/06/26 14:35:31 by jiawong           #+#    #+#             */
+/*   Updated: 2023/06/26 16:04:54 by jiawong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_isdigit(int c)
 {
-    long    nb;
-
-    nb = n;
-	if (nb < 0)
+	if (c >= 48 && c <= 57)
 	{
-		ft_putchar_fd('-', fd);
-		nb *= -1;
+		return (1);
 	}
-	if ( nb >= 0 && nb <= 9)
-        ft_putchar_fd(nb + '0', fd);
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);	
-	}
+	return (0);
 }
