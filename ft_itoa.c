@@ -29,8 +29,11 @@ int checkdigit(long n)
 
 int power(int n1)
 {
-	int i = 1;
-	int res = 1;
+	int i;
+	int res;
+
+	i = 1;
+	res = 1;
 	if (n1 == 0)
 		return (1);
 	while (i < n1)
@@ -43,23 +46,25 @@ int power(int n1)
 
 char	*ft_itoa(int n)
 {
-	char *arr=NULL;
-	long nbr = n;
-	int i = 0;
+	char	*arr;
+	long	nbr;
+	int		i;
+
+	arr = NULL;
+	nbr = n;
+	i = 0;
 	if ( nbr < 0 )
 	{
-		arr = (char *)malloc(sizeof(char) * checkdigit(nbr) + 3);
-		arr[i] = '-';
+		arr = (char *)malloc(sizeof(char) * checkdigit(nbr) + 2);
+		arr[i++] = '-';
 		nbr *= -1;
-		i++;
 	}
 	else
-		arr = (char *)malloc(sizeof(char) * checkdigit(nbr) + 2);
+		arr = (char *)malloc(sizeof(char) * checkdigit(nbr) + 1);
 	while( nbr > 9)
 	{
-        arr[i] = ((nbr / power(checkdigit(nbr))) + '0');
+        arr[i++] = ((nbr / power(checkdigit(nbr))) + '0');
 		nbr = nbr % power(checkdigit(nbr));
-		i++;
     }
 	arr[i++] = nbr + '0';
 	arr[i] = '\0';
