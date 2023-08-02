@@ -14,11 +14,11 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned char	*new;
+	void	*new;
 
-	if (count == SIZE_MAX || size == SIZE_MAX)
+	if (count > SIZE_MAX / size || size > SIZE_MAX / count)
 		return (NULL);
-	new = (unsigned char *)malloc(count * size);
+	new = (void c *)malloc(count * size);
 	if(!new)
 		return (NULL);
 	ft_bzero(new, count * size);
