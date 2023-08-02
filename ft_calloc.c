@@ -14,24 +14,13 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	*new;
+	unsigned char	*new;
 
-	new = malloc(count * size);
-	while (*new != '\0')
-	{
-		*new++ = 0;
-	}
+	if (count == SIZE_MAX || size == SIZE_MAX)
+		return (NULL);
+	new = (unsigned char *)malloc(count * size);
+	if(!new)
+		return (NULL);
+	ft_bzero(new, count * size);
 	return (new);
 }
-/*
-{
-	size_t	*new;
-
-	new = malloc(count * size);
-	while (*new != '\0')
-	{
-		*new++ = 0;
-	}
-	return (new);
-}
-*/
